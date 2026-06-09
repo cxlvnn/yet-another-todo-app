@@ -14,6 +14,8 @@ if len(sys.argv) == 1:
 def sanity_check(arg):
     if arg[1] == "-add" and len(sys.argv) == 2:
         sys.exit("Gotta provide that title buddy")
+    elif arg[1] == "-done" and len(sys.argv) == 2:
+        sys.exit("Gotta provide that id buddy")
 
 
 sanity_check(sys.argv)
