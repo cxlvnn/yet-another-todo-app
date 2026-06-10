@@ -11,7 +11,7 @@ if len(sys.argv) == 1:
     sys.exit(help_message)
 
 
-def sanity_check(arg):
+def sanity_check[T](arg: list[T]):
     if arg[1] == "-add" and len(sys.argv) == 2:
         sys.exit("Gotta provide that title buddy")
     elif arg[1] == "-done" and len(sys.argv) == 2:
@@ -23,12 +23,21 @@ sanity_check(sys.argv)
 command = sys.argv[1]
 
 
+lines = None
+
+
 def list_tasks():
-    print("Hello tasks")
+    with open("Tasks.txt", "r") as f:
+        print("Tasks")
+        print("----------------------------")
+        for line in f:
+            print(line, end="")
+        print("----------------------------")
 
 
 def add_task(title: str):
-    print(f"Hello task {title}")
+    with open("Tasks.txt", "a") as f:
+        _ = f.write(f"{title}:pending\n")
 
 
 def mark_task(id: str):
@@ -37,7 +46,7 @@ def mark_task(id: str):
 
 match command:
     case "-list":
-        print("Hello tasks")
+        list_tasks()
     case "-add":
         add_task(sys.argv[2])
     case "-done":
