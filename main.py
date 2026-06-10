@@ -36,12 +36,25 @@ def list_tasks():
 
 
 def add_task(title: str):
+
+    id = 0
+    with open("Tasks.txt", "r") as f:
+        lines = f.readlines()
+    if not lines:
+        sys.exit
+    else:
+        line = lines[-1]
+        character = line.find(".")
+        id = int(line[:character]) or 0
+        id += 1
+
     with open("Tasks.txt", "a") as f:
-        _ = f.write(f"{title}:pending\n")
+        _ = f.write(f"{id}.{title}:pending\n")
 
 
 def mark_task(id: str):
-    print(f"Hello task with id {id}")
+    with open("Tasks.txt", "r") as f:
+        lines = f.readlines()
 
 
 match command:

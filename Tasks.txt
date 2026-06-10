@@ -1,2 +1,3 @@
-eating something:pending
-making a dish:pending
+0.cooking:pending
+1.cooking:pending
+2.cooking:pending
