@@ -41,7 +41,7 @@ def add_task(title: str):
     with open("Tasks.txt", "r") as f:
         lines = f.readlines()
     if not lines:
-        sys.exit
+        sys.exit()
     else:
         line = lines[-1]
         character = line.find(".")
@@ -55,6 +55,17 @@ def add_task(title: str):
 def mark_task(id: str):
     with open("Tasks.txt", "r") as f:
         lines = f.readlines()
+    found = False
+    for i, line in enumerate(lines):
+        if line.startswith(f"{id}."):
+            lines[i] = line.replace(":pending", ":done", 1)
+            found = True
+            break
+    if not found:
+        sys.exit(f"No task found with id {id}")
+    with open("Tasks.txt", "w") as f:
+        f.writelines(lines)
+    print(f"Task {id} marked as done")
 
 
 match command:

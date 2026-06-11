@@ -1,3 +1,3 @@
-0.cooking:pending
-1.cooking:pending
+0.cooking:done
+1.cooking:done
 2.cooking:pending
